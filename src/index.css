@@ -12,3 +12,147 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.compnenetList{
+  width:300px;
+  height: 600px;
+  float: left;
+  border: 1px solid;
+}
+
+.flowChart {
+  width:700px;
+  height: 600px;
+  float: left;
+  border: 1px solid;
+  background-color: gray;
+}
+
+.main{
+   margin: 0 auto;
+}
+
+.flowChartResult{
+  width:700px;
+  height: 600px;
+  float: left;
+}
+
+.shapes{
+  border: 1px solid red;
+  width:99%;
+  position: relative;
+  height: 240px;
+  margin:2px;
+}
+
+.buttonBox{
+  border: 1px solid red;
+  width:99%;
+  position: relative;
+  height: 60px;
+  margin:2px;
+}
+
+.header{
+  text-align: center;
+}
+.element{
+  transition: all;
+  cursor: move;
+  margin: 10px;
+  background-position: top left;
+  float:left;
+}
+
+.connector {
+  width: 50px;
+  height: 40px;
+  padding-left: 60px;
+  cursor: move;
+}
+
+.upArrow{
+  width: 50px;
+  height: 50px;
+  font-size:50px;
+}
+
+.downArrow{
+  width: 50px;
+  height: 50px;
+  font-size:50px;
+}
+
+.leftArrow{
+  width: 50px;
+  height: 50px;
+  font-size:50px;
+}
+
+.rightArrow{
+  width: 50px;
+  height: 50px;
+  font-size:50px;
+}
+
+.bothArrow{
+  width: 50px;
+  height: 50px;
+  font-size:50px;
+}
+
+.saveButton{
+  width: 66%;
+  background-color: gray;
+  color:white;
+  align-content: center;
+}
+
+.flowChart .ui-draggable-dragging {
+
+}
+
+.resizable {
+  border: 0px solid;
+}
+
+.square{
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+}
+
+.diamond{
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  transform: rotate(45deg);
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.rectangle {
+  height: 50px;
+  width: 100px;
+  border: 1px solid black;
+}
+
+.parallelogram {
+	width: 100px;
+	height: 50px;
+	transform: skew(20deg);
+	border: 1px solid black;
+}
+
+.oval {
+  height: 50px;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
