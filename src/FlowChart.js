@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import PropTypes from 'prop-types';
 import Square from './components/square';
 import Parallelogram from './components/parallelogram';
 import Oval from './components/oval';
@@ -12,11 +13,11 @@ import LeftArrow from './components/leftArrow';
 import RightArrow from './components/rightArrow';
 import BothArrow from './components/bothArrow';
 import $ from "jquery";
+import DownloadFile from './DownloadFile.js';
 import backgroundImage from './img/background.png'
 import {getOffsetSum, getOffsetRect, getOffset} from './components/flowChartUtility';
 require('webpack-jquery-ui/draggable');
 require('webpack-jquery-ui/resizable');
-
 
 class FlowChart extends Component {
   constructor(props){
@@ -25,7 +26,6 @@ class FlowChart extends Component {
     this.allowDrop = this.allowDrop.bind(this);
     this.drag = this.drag.bind(this);
     this.drop = this.drop.bind(this);
-    //this.getOffset = this.getOffset.bind(this);
   }
 
   componentDidMount(){
@@ -116,6 +116,48 @@ class FlowChart extends Component {
     this.setState({flowChartData:flowChartData});
   }
 
+  forceDownload1=()=>{
+    this.forceDownload("file/downloadFile","ed687f27-93f1-4064-9eca-347543d7348a.jpg");
+  }
+
+  forceDownload = async(url, fileName)=>{
+    let options={
+                  headers: {
+                    'apiToken': localStorage.getItem('apiToken'),
+                    'username': localStorage.getItem('username'),
+                    'Content-Type': 'application/json',
+                    'mode': 'no-cors',
+                    'responseType':"blob"
+                  },
+                  'mode': 'no-cors',
+                  'responseType': 'blob',
+                };
+    options['method'] = "GET";
+     return await fetch("http://localhost:8080/api/"+url+"?fileName="+fileName, options)
+      .then(response => {
+        debugger;
+        const filename1 = "file.jpg";
+        response.blob().then(blob => {
+          let url=  window.URL.createObjectURL(blob);
+          let a = document.createElement('a');
+          a.href = url;
+          a.download = filename1;
+          a.click();
+        });
+    });
+  }
+
+
+  handleResponse =(response)=> {
+    debugger;
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'download');
+    document.body.appendChild(link);
+    link.click();
+  }
+
 render() {
   let flowChartData = this.state.flowChartData;
   let flowChardDataList = "", jsonFlowChardDataList="";
@@ -183,7 +225,8 @@ render() {
 
         <div className="buttonBox">
           <ul>
-            <input type="button" className="saveButton" value="Save" onClick={this.saveData}/>
+            <input type="button" className="saveButton" value="Save" onClick={this.forceDownload1}/>
+            <DownloadFile/>
           </ul>
         </div>
 
@@ -212,5 +255,8 @@ render() {
     );
   }
 }
+FlowChart.propTypes = {
+  inputData: PropTypes.array,
+};
 
 export default FlowChart;
