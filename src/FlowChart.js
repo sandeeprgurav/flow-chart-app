@@ -225,8 +225,7 @@ render() {
 
         <div className="buttonBox">
           <ul>
-            <input type="button" className="saveButton" value="Save" onClick={this.forceDownload1}/>
-            <DownloadFile/>
+            <input type="button" className="saveButton" value="Save" onClick={this.forceDownload1}/>            
           </ul>
         </div>
 
