@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "file-saver": "^2.0.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-resizable-rotatable-draggable": "^0.2.0",
